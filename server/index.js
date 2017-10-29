@@ -12,8 +12,14 @@ router.use(cookieParser(undefined, {
 
 router.use('/authors', sessions.authenticate, require('./routes/authors'));
 router.use('/todos', sessions.authenticate, require('./routes/todos'));
-router.use('/sessions', sessions.authenticate, sessions.get);
+router.get('/sessions', sessions.authenticate, sessions.get);
 
-router.use((req, res, next) => next(new ServerError.notFound()))
+router.use((req, res, next) => next(new ServerError.NotFound()))
+router.use((err, req, res, next) => 	{
+  res.status(err.status || 500);
+	res.json({
+		message: err.message,
+	});
+});
 
 module.exports = router;
