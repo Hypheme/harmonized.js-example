@@ -1,5 +1,9 @@
-const { Router } = require('express');
+const createRouter = require('./create-route');
 
-const router = Router();
-
-module.exports = router;
+module.exports = createRouter({
+  maxItems: 10,
+  key: 'authors',
+  schema: {
+    name: String,
+  }
+});

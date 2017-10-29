@@ -3,6 +3,10 @@ const db = require('./memory-db');
 const config = require('./config');
 const cookie = require('cookie');
 
+const uuid = require('uuid/v4');
+const authorSeeder = require('./routes/authors').seeder;
+const todoSeeder = require('./routes/todos').seeder;
+
 function authenticate(req, res, next) {
   if(!req.cookies.id || !db.get(req.cookies.id)) {
     createNewSession()
@@ -21,7 +25,11 @@ function authenticate(req, res, next) {
 }
 
 function createNewSession() {
-  const user = { id : Date.now() };
+  const user = { 
+    id:  uuid(),
+    authors: authorSeeder(),
+  };
+  user.todos = todoSeeder({ authorId: user.authors.map(author => author.id) })
   if(db.get(user.id)) {
     return new Promise(resolve => setTimeout(resolve, 1)).then(createNewSession);
   }
