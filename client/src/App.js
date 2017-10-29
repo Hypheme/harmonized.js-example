@@ -7,14 +7,6 @@ class App extends Component {
 
   // Fetch passwords after first mount
   componentDidMount() {
-    this.getMessage();
-  }
-
-  getMessage = () => {
-    // Get the passwords and store them in state
-    fetch('/api/message')
-      .then(res => res.json())
-      .then(({ message }) => this.setState({ message }));
   }
 
   render() {
