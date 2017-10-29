@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 
+import todosStore from '../stores/toDosStore.js';
 import ToDosView from './ToDosView';
 
 class ToDosContainer extends Component {
   // Initialize state
   state = {
-    todos: [{ name: 'a todo' }]
+    store: todosStore
   };
 
   componentDidMount() {}
 
   render() {
-    const { todos } = this.state;
-    console.log(todos);
-    return <ToDosView todos={todos} />;
+    const { store } = this.state;
+    return <ToDosView todos={store.items} />;
   }
 }
 
