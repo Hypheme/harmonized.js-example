@@ -29,7 +29,7 @@ function createNewSession() {
     id:  uuid(),
     authors: authorSeeder(),
   };
-  user.todos = todoSeeder({ authorId: user.authors.map(author => author.id) })
+  user.todos = todoSeeder({ authors: user.authors.map(author => author.id) })
   if(db.get(user.id)) {
     return new Promise(resolve => setTimeout(resolve, 1)).then(createNewSession);
   }

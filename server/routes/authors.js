@@ -5,5 +5,11 @@ module.exports = createRouter({
   key: 'authors',
   schema: {
     name: String,
+  }, 
+  seeder(){
+    return [
+      { name: 'Simon Jentsch' },
+      { name: 'Johannes Merz' },
+    ]
   }
 });

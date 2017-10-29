@@ -9,6 +9,7 @@ function createRoute(options) {
   const router = Router();
   
   router.get('/', (req, res, next) => res.json(req.user[options.key]))
+  
   router.get('/:id', (req, res, next) => {
     const entry = req.user[options.key].find(element => element.id === req.params.id);
     if(entry) {
@@ -26,7 +27,7 @@ function createRoute(options) {
   router.put('/:id', (req, res, next) => {
     const entry = req.user[options.key].find(element => element.id === req.params.id);
     if(entry) {
-      Object.keys(options.schema).forEach(key => entry[key] = req.body[key])
+      Object.assign(entry, validateItemData(req.body));
       db.put(req.user.id, req.user);
       return res.json(entry);
     }
@@ -40,15 +41,26 @@ function createRoute(options) {
     const entry = {
       id: uuid()
     };
-    console.log(req.body);
-    Object.keys(options.schema).forEach(key => entry[key] = req.body[key]) // TODO validate references to other routes
+    Object.assign(entry, validateItemData(req.body));
     req.user[options.key].push(entry);
     db.put(req.user.id, req.user);
     res.json(entry);
   })
   
+  function validateItemData(data) {
+    return Object.keys(options.schema)
+      .reduce((result, key) => {
+        switch (options.schema[key]) {
+          // TODO check references
+          default:
+          result[key] = data[key];    
+        }
+        return result;
+      }, {})      
+  }
+  
   function seeder(references){
-    return []; // todo create content
+    return options.seeder(references).map(items => Object.assign({id: uuid()}, items));
   }
   
   return { router, seeder };
