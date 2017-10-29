@@ -8,8 +8,8 @@ app.use(logger('combined'));
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api/hello', (req, res) => {
-  res.json({ hello : 'world' });
+app.get('/api/message', (req, res) => {
+  res.json({ message : 'hello world' });
 });
 
 // TODO api not found handler
