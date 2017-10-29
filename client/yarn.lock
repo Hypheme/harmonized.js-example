@@ -2927,13 +2927,12 @@ har-validator@~5.0.3:
     ajv "^5.1.0"
     har-schema "^2.0.0"
 
-"harmonized@git+ssh://git@github.com:Hypheme/harmonized.js.git":
+"harmonized@git+ssh://git@github.com/Hypheme/harmonized.js.git":
   version "0.0.0"
-  resolved "git+ssh://git@github.com:Hypheme/harmonized.js.git#a36b56b3f8c30d9b8719bf86f098dba4f7524ef2"
+  resolved "git+ssh://git@github.com/Hypheme/harmonized.js.git#845ee78bc2698ecff28afbd4318f31058095b4aa"
   dependencies:
     glob-to-regexp "^0.3.0"
     lodash "^4.16.2"
-    mobx "3.0.1"
     uuid "^3.0.1"
 
 has-ansi@^2.0.0:
@@ -4254,9 +4253,9 @@ mobx-react@^4.3.3:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-mobx@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.0.1.tgz#b1273871efee368010e2f1e027cde97eed879700"
+mobx@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.3.1.tgz#c38fc1a287a0dda3f5d4b85efe1137fedd9dcdf0"
 
 ms@2.0.0:
   version "2.0.0"

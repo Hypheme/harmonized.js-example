@@ -13,7 +13,7 @@ class ToDosContainer extends Component {
 
   render() {
     const { store } = this.state;
-    return <ToDosView todos={store.items} />;
+    return store.loaded ? <ToDosView todos={store.items} /> : <div>loading...</div>;
   }
 }
 
