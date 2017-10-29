@@ -10,6 +10,6 @@ test('renders without crashing', () => {
 });
 
 test('displays loading message', () => {
-  const app = renderer.create(<App/>);
+  const app = renderer.create(<App />);
   expect(app).toMatchSnapshot();
 });
