@@ -1,11 +1,21 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const cookieParser = require('cookie-parser')
 
 const app = express();
+
+const config = require('./server/config');
 const api = require('./server');
+const { authenticate } = require('./server/sessions');
+
+app.use(cookieParser(undefined, {
+  maxAge: config.SESSION_LIFETIME_IN_SECONDS
+}));
 
 app.use(logger('combined'));
+app.use(authenticate)
+
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
