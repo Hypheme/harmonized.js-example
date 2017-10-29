@@ -1,18 +1,25 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
+const config = require('./server/config');
+const api = require('./server');
+const { authenticate } = require('./server/sessions');
+
+app.use(cookieParser(undefined, {
+  maxAge: config.SESSION_LIFETIME_IN_SECONDS
+}));
+
 app.use(logger('combined'));
+app.use(authenticate)
+
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api/message', (req, res) => {
-  res.json({ message : 'hello world' });
-});
-
-// TODO api not found handler
+app.use('/api', api);
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
