@@ -1,0 +1,15 @@
+{
+  "name": "harmonized.js-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Hypheme/harmonized.js-example.git",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
