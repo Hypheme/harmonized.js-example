@@ -6,11 +6,21 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "memory-cache": "^0.2.0",
     "morgan": "^1.9.0"
   },
   "scripts": {
     "start": "node index.js",
     "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "prettier": "^1.7.4"
   }
 }
