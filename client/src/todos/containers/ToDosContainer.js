@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 
-import todosStore from '../stores/toDosStore.js';
+import { toDosStore } from '../../stores';
 import ToDosView from './ToDosView';
 
+import { observer } from 'mobx-react';
+
+@observer
 class ToDosContainer extends Component {
   // Initialize state
   state = {
-    store: todosStore
+    store: toDosStore
   };
 
   componentDidMount() {}
 
   render() {
     const { store } = this.state;
-    return store.loaded ? <ToDosView todos={store.items} /> : <div>loading...</div>;
+    return (store && store.loaded) ? <ToDosView todos={store.items} /> : <div>loading...</div>;
   }
 }
 

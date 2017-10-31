@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ToDos from './todos';
+import Authors from './authors';
 
 class App extends Component {
   componentDidMount() {}
@@ -9,7 +10,10 @@ class App extends Component {
     return (
       <div className="App">
         <div>
+          <Authors />
+
           <ToDos />
+          
         </div>
       </div>
     );

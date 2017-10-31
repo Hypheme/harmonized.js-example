@@ -1,34 +1,26 @@
 import { Store, HttpTransporter, Schema, customTypes } from 'harmonized';
-
-HttpTransporter.addOfflineChecker({
-  pattern: /.*/, 
-  checkUrl: 'localhost:5000/api/todos',
-});
+import authorsStore from './authorsStore'
 
 const toDosStore = new Store({
   schema: new Schema({
-    // id: {
-    //   type: customTypes.Key,
-    //   key: 'id',
-    //   _key: '_id',
-    //   primary: true,
-    // },
     properties : {
       task: String,
       completed: String,
-      assignee: Number // todo add authors
+      // author: {
+      //   type: customTypes.NumberKey,
+      //   key: 'authorId',
+      //   _key: '_authorId',
+      //   ref: authorsStore,
+      // }
     }
   }),
   transporter: new HttpTransporter({
-    baseUrl: 'localhost:5000/api',
+    baseUrl: '/api',
     path: 'todos',
   })
   // clientStorage: new LocalStorage({
   //   // TODO: add options here when LocalStorage is implemented
   // }),
 });
-// const toDosStore = {
-//   items: [{ name: 'hans' }]
-// };
 
 export default toDosStore;
