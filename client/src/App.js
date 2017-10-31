@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
+import ToDos from './todos';
+import Authors from './authors';
 
 class App extends Component {
-  // Initialize state
-  state = { message: 'no message yet' }
-
-  // Fetch passwords after first mount
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
-    const { message } = this.state;
-
     return (
       <div className="App">
         <div>
-          <h1>Message</h1>
-          <div>{message}</div>
+          <Authors />
+
+          <ToDos />
+          
         </div>
       </div>
     );
