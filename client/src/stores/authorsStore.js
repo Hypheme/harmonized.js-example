@@ -14,7 +14,7 @@ const authorsStore = new Store({
   //   // TODO: add options here when LocalStorage is implemented
   // }),
 });
-// const toDosStore = {
+// const todosStore = {
 //   items: [{ name: 'hans' }]
 // };
 

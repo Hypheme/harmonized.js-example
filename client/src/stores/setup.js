@@ -3,9 +3,7 @@ import { HttpTransporter, TransporterMiddleware } from 'harmonized';
 class UseCookiesMiddleware extends TransporterMiddleware {
 
   send(input) {
-    console.log('my awesome middleware is used', input);
-    console.log(document.cookie);
-    input.req.credentials= 'include';
+    input.req.credentials = 'include';
     return input;
   }
 

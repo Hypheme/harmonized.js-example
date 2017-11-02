@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 
-import { toDosStore } from '../../stores';
-import ToDosView from './ToDosView';
+import { todosStore, authorsStore } from '../../stores';
+import TodosView from './TodosView';
 
 import { observer } from 'mobx-react';
 
 @observer
-class ToDosContainer extends Component {
-  // Initialize state
-  state = {
-    store: toDosStore
-  };
+class TodosContainer extends Component {
 
   componentDidMount() {}
 
+  changeAuthorOfItem(item, author) {
+    item.update({ author })
+  }
+
   render() {
-    const { store } = this.state;
-    return (store && store.loaded) ? <ToDosView todos={store.items} /> : <div>loading...</div>;
+    return (todosStore && todosStore.loaded) ? 
+      <TodosView 
+        todos={todosStore.items} 
+        authors={authorsStore.items} 
+        changeAuthorOfItem={(item, author) => this.changeAuthorOfItem(item, author)}  
+      /> : 
+      <div>loading...</div>;
   }
 }
 
-export default ToDosContainer;
+export default TodosContainer;
