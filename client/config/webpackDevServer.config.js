@@ -1,4 +1,4 @@
-
+'use strict';
 
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
@@ -32,7 +32,6 @@ function sessionProyx(req, res, next) {
     next()
   }
 }
-
 
 module.exports = function(proxy, allowedHost) {
   return {
@@ -106,6 +105,7 @@ module.exports = function(proxy, allowedHost) {
     proxy,
     setup(app) {
       app.use(sessionProyx);
+
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
       // This service worker file is effectively a 'no-op' that will reset any
