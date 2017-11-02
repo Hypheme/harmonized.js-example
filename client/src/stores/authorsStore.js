@@ -1,4 +1,4 @@
-import { Store, HttpTransporter, Schema, customTypes } from 'harmonized';
+import { Store, HttpTransporter, Schema } from 'harmonized';
 
 const authorsStore = new Store({
   schema: new Schema({
