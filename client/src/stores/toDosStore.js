@@ -6,12 +6,12 @@ const toDosStore = new Store({
     properties : {
       task: String,
       completed: String,
-      // author: {
-      //   type: customTypes.NumberKey,
-      //   key: 'authorId',
-      //   _key: '_authorId',
-      //   ref: authorsStore,
-      // }
+      author: {
+        type: customTypes.NumberKey,
+        key: 'authorId',
+        _key: '_authorId',
+        ref: authorsStore,
+      }
     }
   }),
   transporter: new HttpTransporter({

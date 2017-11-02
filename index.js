@@ -7,18 +7,20 @@ const app = express();
 
 const config = require('./server/config');
 const api = require('./server');
-const { authenticate } = require('./server/sessions');
+const { authenticate, authenticateRoot } = require('./server/sessions');
 
 app.use(cookieParser(undefined, {
   maxAge: config.SESSION_LIFETIME_IN_SECONDS
 }));
 
 app.use(logger('combined'));
-app.use(authenticate)
+app.get('index.html', authenticateRoot)
+app.get('/', authenticateRoot)
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+app.use('/api', authenticate)
 app.use('/api', api);
 
 // The "catchall" handler: for any request that doesn't

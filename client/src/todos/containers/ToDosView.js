@@ -5,7 +5,7 @@ const ToDosView = observer(({ todos }) => {
   return (
     <div>
       <h2>TODOS</h2>
-      <ul>{todos.map((todo, index) => <li key={index}>{todo.task}</li>)}</ul>
+      <ul>{todos.map((todo, index) => <li key={index}>{todo.task} - {todo.author.name}</li>)}</ul>
     </div>
   );
 });
