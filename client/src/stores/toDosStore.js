@@ -1,17 +1,17 @@
 import { Store, HttpTransporter, Schema, customTypes } from 'harmonized';
 import authorsStore from './authorsStore'
 
-const toDosStore = new Store({
+const todosStore = new Store({
   schema: new Schema({
     properties : {
       task: String,
       completed: String,
-      // author: {
-      //   type: customTypes.NumberKey,
-      //   key: 'authorId',
-      //   _key: '_authorId',
-      //   ref: authorsStore,
-      // }
+      author: {
+        type: customTypes.NumberKey,
+        key: 'authorId',
+        _key: '_authorId',
+        ref: authorsStore,
+      }
     }
   }),
   transporter: new HttpTransporter({
@@ -23,4 +23,5 @@ const toDosStore = new Store({
   // }),
 });
 
-export default toDosStore;
+export default todosStore;
+

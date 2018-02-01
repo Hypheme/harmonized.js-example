@@ -1,9 +1,9 @@
 import './setup'
 
 import authorsStore from './authorsStore'
-import toDosStore from './toDosStore'
+import todosStore from './todosStore'
 
 export { 
   authorsStore, 
-  toDosStore,
+  todosStore,
 }

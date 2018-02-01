@@ -1,4 +1,4 @@
-import { Store, HttpTransporter, Schema, customTypes } from 'harmonized';
+import { Store, HttpTransporter, Schema } from 'harmonized';
 
 const authorsStore = new Store({
   schema: new Schema({
@@ -14,7 +14,7 @@ const authorsStore = new Store({
   //   // TODO: add options here when LocalStorage is implemented
   // }),
 });
-// const toDosStore = {
+// const todosStore = {
 //   items: [{ name: 'hans' }]
 // };
 

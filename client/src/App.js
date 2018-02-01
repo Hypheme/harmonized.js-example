@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ToDos from './todos';
+import Todos from './todos';
 import Authors from './authors';
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
         <div>
           <Authors />
 
-          <ToDos />
+          <Todos />
           
         </div>
       </div>

@@ -8,6 +8,31 @@ const paths = require('./paths');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 
+const request = require('request')
+const { proxy } = require('../package.json')
+
+function sessionProyx(req, res, next) {
+  // console.log(req.headers);
+  if(!req.cookies){
+    var options = {
+      url: `${proxy}`,
+      headers: req.headers,
+      cookies: req.cookies,
+    };  
+    request(options, (err, response) => {
+      if(err) {
+        return next(err);
+      }
+      if(response.headers['set-cookie']){
+        res.set('Set-Cookie', response.headers['set-cookie'][0]);
+      }
+      next()
+    })
+  } else {
+    next()
+  }
+}
+
 module.exports = function(proxy, allowedHost) {
   return {
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
@@ -79,6 +104,8 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     setup(app) {
+      app.use(sessionProyx);
+
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
       // This service worker file is effectively a 'no-op' that will reset any

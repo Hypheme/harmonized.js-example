@@ -1,3 +1,4 @@
-import ToDosContainer from './containers/AuthorsContainer';
+import TodosContainer from './containers/AuthorsContainer';
 
-export default ToDosContainer;
+export default TodosContainer;
+
